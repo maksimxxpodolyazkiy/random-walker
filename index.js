@@ -1,9 +1,28 @@
+let yEye = 60;
+let eyeUp = false;
+let eyeDown = false;
+
 function setup() {
     createCanvas(1520, 700);
     angleMode(DEGREES);
 }
   
 function draw() {
+    if (yEye === 60) {
+        eyeDown = true;
+        eyeUp = false;
+    }
+    if (yEye === 0) {
+        eyeDown = false;
+        eyeUp = true;
+    }
+    if (eyeDown) {
+        yEye = yEye - 4;
+    }
+    if (eyeUp) {
+        yEye = yEye + 4;
+    }
+
     rectMode(CENTER);
     ellipseMode(CENTER);
     
@@ -18,7 +37,7 @@ function draw() {
     stroke(255);
     // bezier(720, 350, 735, 320, 785, 320, 800, 350);
     // bezier(720, 350, 735, 380, 785, 380, 800, 350);
-    ellipse(760, 350, 90, 60)
+    ellipse(760, 350, 90, yEye)
     fill(1000)
     ellipse(760, 350, 8, 15)
 }
